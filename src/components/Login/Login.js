@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import "./Login.css";
+import { Redirect } from 'react-router-dom'
+
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userName: "",
       userEmail: "",
-      userPurpose: "",
+      userPurpose: "placeholder",
       userNameError: false,
       userEmailError: false,
-      userPurposeError: null,
+      userPurposeError: false,
+      completedForm: false
     };
   }
 
@@ -21,34 +24,49 @@ class Login extends Component {
   //some method that checks to see if you've filled everything out
   checkForErrors = (event) => {
     event.preventDefault();
+    
+    this.setState({userNameError: false,
+      userEmailError: false,
+      userPurposeError: false,})
+
     if (!this.state.userName) {
       this.setState({ userNameError: true });
-    }
+    } 
+
     if (!this.state.userEmail) {
       this.setState({ userEmailError: true });
-    }
-    if (this.state.userName) {
-      this.setState({ userNameError: false });
-    }
-    if (this.state.userEmail) {
-      this.setState({ userEmailError: false });
-    }
-    if (this.state.userPurpose === null) {
+    } 
+
+    if (this.state.userPurpose === "placeholder") {
       this.setState({ userPurposeError: true });
-    }
-    if (this.state.userPurpose !== "placeholder") {
-      this.setState({ userPurposeError: false });
-    }
-    //some error checking
-    //if successful => invoke function that was passed as prop
-    //if unsuccessful, trigger error message
+    } 
+
+    this.updateUser();
   };
 
-  //error message
+  updateUser = () => {
+    if (
+      this.state.userName !== "" &&
+      this.state.userEmail !== "" &&
+      this.state.userPurpose !== "placeholder"
+    ) {
+      this.setState({completedForm: true})
+      const user = {
+        userName: this.state.userName,
+        userEmail: this.state.userEmail,
+        userPurpose: this.state.userPurpose,
+      };
+      this.props.addUser(user);
+      return <Redirect to='/area' />
+    }
+  }
+
 
   render() {
+
     return (
       <section className="login-form-background">
+      {this.state.completedForm && <Redirect to='/area' />}
         <section className="login-form-container">
           <form className="login-form">
             <label htmlFor="name">Name</label>
@@ -72,7 +90,7 @@ class Login extends Component {
               onChange={this.handleChange}
             />
             <label htmlFor="purpose">Purpose</label>
-            {!this.state.userPurposeError && (
+            {this.state.userPurposeError && (
               <p className="error-message">Please enter a purpose.</p>
             )}
             <select
@@ -85,7 +103,10 @@ class Login extends Component {
               <option value="vacation">Vacation</option>
               <option value="other">Other</option>
             </select>
-            <button type="submit" onClick={this.checkForErrors}>
+            <button
+              type="submit"
+              onClick={(event) => this.checkForErrors(event)}
+            >
               Login
             </button>
           </form>
