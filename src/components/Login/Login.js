@@ -3,9 +3,11 @@ import React, {
 } from 'react'
 
 class Login extends Component {
-  constructor() {
-    super()
-    this.state = {}
+  constructor(props) {
+    super(props)
+    this.state = {
+      currentPage: null,
+    }
   }
 
   render() {
