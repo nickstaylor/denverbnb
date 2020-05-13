@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Login from '../Login/Login'
-
+import Header from '../Header/Header'
 import { NavLink, Switch, Route } from 'react-router-dom';
 
 class App extends Component {
@@ -10,23 +10,17 @@ class App extends Component {
     super()
     this.state = {
       userName: null,
-      password: null,
     }
   }
+
+  //updates state to include current user's name and purpose
 
   render() {
   return (
     <section className="App">
-      <header>
-        <h1>denverbnb</h1>
-        <nav className="nav-container">
-          <NavLink to='/areas' className='nav'> All Neighborhoods </NavLink>
-          <NavLink to='/favorites' className='nav'> Favorites </NavLink>
-          <NavLink to='/' exact className='nav'> Sign Out </NavLink>
-        </nav>
-      </header>
+      
       <Switch>
-        <Route path="/" exact component={ Login }/>
+        <Route path="/" exact render={ () => <Login />}/>
       </Switch>
     </section>
   )
