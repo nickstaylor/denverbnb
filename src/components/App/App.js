@@ -1,21 +1,36 @@
-import React from 'react';
-import logo from '../../logo.svg';
+import React, { Component } from 'react';
 import './App.css';
-import { NavLink, Redirect } from 'react-router-dom';
 
-function App() {
+import Login from '../Login/Login'
+
+import { NavLink, Switch, Route } from 'react-router-dom';
+
+class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      userName: null,
+      password: null,
+    }
+  }
+
+  render() {
   return (
     <section className="App">
-    <header>
-    <h1>denverbnb</h1>
-    <nav className="nav-container">
-       <NavLink to='/areas' className='nav'> All Neighborhoods </NavLink>
-       <NavLink to='/favorites' className='nav'> Favorites </NavLink>
-       <NavLink to='/' exact className='nav'> Sign Out </NavLink>
-     </nav>
-     </header>
+      <header>
+        <h1>denverbnb</h1>
+        <nav className="nav-container">
+          <NavLink to='/areas' className='nav'> All Neighborhoods </NavLink>
+          <NavLink to='/favorites' className='nav'> Favorites </NavLink>
+          <NavLink to='/' exact className='nav'> Sign Out </NavLink>
+        </nav>
+      </header>
+      <Switch>
+        <Route path="/" exact component={ Login }/>
+      </Switch>
     </section>
-  );
+  )
+ }
 }
 
 export default App;
