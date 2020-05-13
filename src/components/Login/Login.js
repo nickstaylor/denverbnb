@@ -63,19 +63,7 @@ class Login extends Component {
 
 
   render() {
-    //     if (
-    //   this.state.userName !== "" &&
-    //   this.state.userEmail !== "" &&
-    //   this.state.userPurpose !== "placeholder"
-    // ) {
-    //   const user = {
-    //     userName: this.state.userName,
-    //     userEmail: this.state.userEmail,
-    //     userPurpose: this.state.userPurpose,
-    //   };
-    //   this.props.addUser(user);
-      
-    // }
+
     return (
       <section className="login-form-background">
       {this.state.completedForm && <Redirect to='/area' />}
