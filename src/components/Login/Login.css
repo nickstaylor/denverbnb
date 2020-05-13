@@ -1,0 +1,74 @@
+.login-form-background {
+
+    background-image: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5116421568627452) 0%), url("https://www.monaco-denver.com/images/1700-960/denver-downtown-buildings-mountains-boutique-33b2fcd3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: auto;
+    overflow: hidden;
+  } 
+  
+  .login-form-container {
+  
+       display: flex;
+     align-self: center;
+    background-color: #4037A7;
+    border-radius: 5px;
+    height: 55%;
+    justify-content: center;
+    margin: auto;
+    position: relative;
+    text-align: center;
+    transform: translate(0, 50%);
+    width: 25%;
+  }
+  
+  .login-form {
+  display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      align-content: space-evenly;
+      padding: 20% 0;
+  }
+  
+  input {
+    margin: 3% auto;
+    width: 80%;
+    font-size: 20px;
+  }
+  
+  label {
+    text-align: left;
+    padding-left: 9%;
+      color: white;
+  }
+  
+  select {
+    width: 83%;
+      margin: 3% auto;
+      font-size: 20px;
+  }
+  
+  button {
+        width: 35%;
+      height: auto;
+      background-color: #ADDBE4;
+      margin-left: 57%;
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 20px;
+      padding: 5px;
+      border-radius: 10px;
+      border: none;
+      align-items: center;
+  }
+
+  .error-message {
+      color: red;
+      margin: 0;
+  }
+
+  .hide {
+      display: none;
+  }
