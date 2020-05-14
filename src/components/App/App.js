@@ -14,8 +14,10 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      user: '',
-      areas: []
+      user: 'bg',
+      areas: [],
+      favorites: [],
+      listings: []
     }
   }
 
@@ -38,12 +40,14 @@ class App extends Component {
                       details: info.details,
                       dev_id: info.dev_id,
                       area: info.area,
-                      db_connect: info.db_connect
+                      db_connect: info.db_connect,
+                      isFavorited: false
                       }
             })
           })
           return Promise.all(listingInfoPromises).then(listingInfo=>{
             return { area: area.area,
+              id: listingInfo[0].area_id,
               fullname: neighborhood.name,
               about: neighborhood.about,
               listings: listingInfo}
@@ -78,13 +82,19 @@ class App extends Component {
   }
 
   removeUser = () => {
+  // return  (<Route path="/" exact render={ () => <Login addUser={this.addUser}/>}/>,
     this.setState({user: ''})
+
   }
 
   //updates state to include current user's name and purpose
 
   render() {
     console.log('state', this.state.areas)
+    if (!this.state.user){
+      return <Redirect to='/' exact />
+      // return <Route path="/" exact render={ () => <Login addUser={this.addUser}/>}/>
+    }
   return (
     <section className="App">
 
