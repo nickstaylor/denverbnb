@@ -47,7 +47,9 @@ class App extends Component {
           })
           return Promise.all(listingInfoPromises).then(listingInfo=>{
             return { area: area.area,
-              id: listingInfo[0].area_id,
+              // id: listingInfo[0].area_id,
+              id: neighborhood.id,
+              location: neighborhood.location,
               fullname: neighborhood.name,
               about: neighborhood.about,
               listings: listingInfo}
