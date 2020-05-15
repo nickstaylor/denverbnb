@@ -4,7 +4,7 @@ import "./Area.css";
 
 
 const Area = (props) => {
-
+console.log(props)
     return (
       <div className="area">
         <section className="title-image">
