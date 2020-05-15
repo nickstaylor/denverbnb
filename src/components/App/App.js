@@ -39,6 +39,7 @@ class App extends Component {
                     ...singleNeighborhood,
                     nickname: neighborhood.area,
                     listings: data,
+                    image: `${neighborhood.area}.png`
                   };
                 })
                 .then((areaInfo) => {
