@@ -21,8 +21,8 @@ class App extends Component {
     const baseURL = "https://vrad-api.herokuapp.com";
     fetch(`${baseURL}/api/v1/areas`)
       .then((response) => response.json())
-      .then((data) => {
-        let promises = data.areas.map((neighborhood) => {
+      .then((someInfo) => {
+        let promises = someInfo.areas.map((neighborhood) => {
           return fetch(`${baseURL}${neighborhood.details}`)
             .then((moreInfo) => moreInfo.json())
             .then((singleNeighborhood) => {
@@ -37,6 +37,7 @@ class App extends Component {
                 .then((data) => {
                   return {
                     ...singleNeighborhood,
+                    nickname: neighborhood.area,
                     listings: data,
                   };
                 })
