@@ -14,7 +14,7 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      user: 'bg',
+      user: '',
       areas: [],
       favorites: [],
       listings: []
@@ -86,24 +86,27 @@ class App extends Component {
   removeUser = () => {
   // return  (<Route path="/" exact render={ () => <Login addUser={this.addUser}/>}/>,
     this.setState({user: ''})
+    return <Redirect to='/' exact />
 
   }
 
   //updates state to include current user's name and purpose
 
   render() {
-    console.log('state', this.state.areas)
-    if (!this.state.user){
-      return <Redirect to='/' exact />
-      // return <Route path="/" exact render={ () => <Login addUser={this.addUser}/>}/>
-    }
+    // console.log('state', this.state.areas)
+    // if (!this.state.user){
+    //   return <Redirect to='/' exact />
+    //   // return <Route path="/" exact render={ () => <Login addUser={this.addUser}/>}/>
+    // }
   return (
     <section className="App">
 
       <Switch>
+
         <Route path="/" exact render={ () => <Login addUser={this.addUser}/>}/>
-        {/* {this.state.user !== '' &&} */}
-        <Route path="/area"  render={ () => <> <Header removeUser={this.removeUser}/> <AreaContainer data={this.state.areas} /> </>}/>
+        {this.state.user ?
+        <Route path="/areas"  render={ () => <> <Header removeUser={this.removeUser}/> <AreaContainer user={this.state.user} data={this.state.areas} /> </>}/>
+        : <Redirect to="/" exact />  }
       </Switch>
     </section>
   )
