@@ -28,12 +28,14 @@ describe("Login", () => {
         <Login addUser={mockAddUser}/>
       </BrowserRouter>
     );
-    const {getByText} = render(router);
+    //if user clicks button without correcr login information
+    const {getByText, getAllByText } = render(router);
     fireEvent.click(getByText('Login'))
-    expect(mockAddUser).toHaveBeenCalledWith(user);
-
+    expect(getAllByText("Please")).toHaveLength(3)
+    // expect(mockAddUser).toHaveBeenCalledWith(user);
+//
   });
 
 //test that error messages appear if conditions are not met
-  
+
 });
