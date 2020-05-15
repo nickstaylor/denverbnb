@@ -6,10 +6,24 @@
     height: 100%;
     width: auto;
     overflow: hidden;
-  } 
-  
+  }
+
+.login-form-background h2 {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: -10%;
+  font-size: 50px;
+  background-color: #4037A7;
+  color: #ADDBE4;
+  padding: 0 2%;
+}
+
+span {
+  font-style: italic;
+  color: white;
+}
   .login-form-container {
-  
+
        display: flex;
      align-self: center;
     background-color: #4037A7;
@@ -22,7 +36,7 @@
     transform: translate(0, 50%);
     width: 25%;
   }
-  
+
   .login-form {
   display: flex;
       flex-direction: column;
@@ -31,25 +45,25 @@
       align-content: space-evenly;
       padding: 20% 0;
   }
-  
+
   input {
     margin: 3% auto;
     width: 80%;
     font-size: 20px;
   }
-  
+
   label {
     text-align: left;
     padding-left: 9%;
-      color: white;
+    color: white;
   }
-  
+
   select {
     width: 83%;
       margin: 3% auto;
       font-size: 20px;
   }
-  
+
   button {
         width: 35%;
       height: auto;
@@ -67,6 +81,7 @@
   .error-message {
       color: red;
       margin: 0;
+      font-size: 20px;
   }
 
   .hide {

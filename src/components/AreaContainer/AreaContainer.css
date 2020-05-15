@@ -1,0 +1,11 @@
+.area-header{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.area-container {
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+}

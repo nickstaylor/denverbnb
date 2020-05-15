@@ -24,22 +24,22 @@ class Login extends Component {
   //some method that checks to see if you've filled everything out
   checkForErrors = (event) => {
     event.preventDefault();
-    
+
     this.setState({userNameError: false,
       userEmailError: false,
       userPurposeError: false,})
 
     if (!this.state.userName) {
       this.setState({ userNameError: true });
-    } 
+    }
 
     if (!this.state.userEmail) {
       this.setState({ userEmailError: true });
-    } 
+    }
 
     if (this.state.userPurpose === "placeholder") {
       this.setState({ userPurposeError: true });
-    } 
+    }
 
     this.updateUser();
   };
@@ -57,7 +57,7 @@ class Login extends Component {
         userPurpose: this.state.userPurpose,
       };
       this.props.addUser(user);
-      return <Redirect to='/area' />
+      return <Redirect to='/areas' />
     }
   }
 
@@ -66,7 +66,8 @@ class Login extends Component {
 
     return (
       <section className="login-form-background">
-      {this.state.completedForm && <Redirect to='/area' />}
+      <h2>Welcome to <span>denverbnb</span>!</h2>
+      {this.state.completedForm && <Redirect to='/areas' />}
         <section className="login-form-container">
           <form className="login-form">
             <label htmlFor="name">Name</label>
@@ -112,6 +113,7 @@ class Login extends Component {
           </form>
         </section>
       </section>
+
     );
   }
 }
