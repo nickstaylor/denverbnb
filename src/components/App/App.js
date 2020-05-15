@@ -3,9 +3,9 @@ import "./App.css";
 import Login from "../Login/Login";
 import Header from "../Header/Header";
 import AreaContainer from "../AreaContainer/AreaContainer";
-import caphill from "../../images/Cap-Hill.png";
+import caphill from "../../images/CapHill.png";
 import lohi from "../../images/LoHi.png";
-import parkhill from "../../images/Park-Hill.png";
+import parkhill from "../../images/ParkHill.png";
 import rino from "../../images/RiNo.png";
 
 import { NavLink, Switch, Route, Redirect } from "react-router-dom";
@@ -27,7 +27,7 @@ class App extends Component {
     fetch(`${baseURL}/api/v1/areas`)
       .then((response) => response.json())
       .then((someInfo) => {
-        let promises = someInfo.areas.map((neighborhood) => {
+        someInfo.areas.map((neighborhood) => {
           return fetch(`${baseURL}${neighborhood.details}`)
             .then((moreInfo) => moreInfo.json())
             .then((singleNeighborhood) => {
@@ -44,16 +44,30 @@ class App extends Component {
                     ...singleNeighborhood,
                     nickname: neighborhood.area,
                     listings: data,
-                    image: `${neighborhood.area
-                      .split(" ")
-                      .join("")
-                      .toLowerCase()}`,
                   };
                 })
                 .then((areaInfo) => {
                   array.push(areaInfo);
                   console.log(array);
                   return array;
+                })
+                .then((completedData) => {
+                  console.log(completedData);
+                  completedData.forEach((area) => {
+                    if (area.nickname === "RiNo") {
+                      area.image = rino;
+                    }
+                    if (area.nickname === "Park Hill") {
+                      area.image = parkhill;
+                    }
+                    if (area.nickname === "LoHi") {
+                      area.image = lohi;
+                    }
+                    if (area.nickname === "Cap Hill") {
+                      area.image = caphill;
+                    }
+                  });
+                  return completedData;
                 })
                 .then((array) => this.setState({ areas: array }))
                 .catch((error) => this.setState({ error }));
