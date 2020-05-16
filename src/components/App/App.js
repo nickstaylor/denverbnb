@@ -8,7 +8,7 @@ import lohi from "../../images/LoHi.png";
 import parkhill from "../../images/ParkHill.png";
 import rino from "../../images/RiNo.png";
 
-import { NavLink, Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 class App extends Component {
   constructor() {
@@ -48,11 +48,11 @@ class App extends Component {
                 })
                 .then((areaInfo) => {
                   array.push(areaInfo);
-                  console.log(array);
+                  // console.log(array);
                   return array;
                 })
                 .then((completedData) => {
-                  console.log(completedData);
+                  // console.log(completedData);
                   completedData.forEach((area) => {
                     if (area.nickname === "RiNo") {
                       area.image = rino;
@@ -154,7 +154,7 @@ class App extends Component {
   //updates state to include current user's name and purpose
 
   render() {
-    // console.log('state', this.state.areas)
+    console.log('state', this.state.areas)
     // if (!this.state.user){
     //   return <Redirect to='/' exact />
     //   // return <Route path="/" exact render={ () => <Login addUser={this.addUser}/>}/>
