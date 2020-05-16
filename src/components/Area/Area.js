@@ -1,18 +1,19 @@
 import React from "react";
 import "./Area.css";
-import {Router, Link} from 'react-router-dom'
+import {Router, Link, Redirect} from 'react-router-dom'
 
 
 class Area extends React.Component {
   constructor (props) {
     super( props )
+    console.log("props", props)
+    console.log("area", props.area)
   }
 
-  viewListings() {
-    return (
-      <Link to={ `/area/${this.props.area.id}/listings` } exact></Link>
-    )
-  }
+  // viewListings(e) {
+  //   const { value } = e.target
+  //   return <Redirect to={ `/areas/${value}` } />
+  // }
 
   render() {
 
@@ -23,7 +24,7 @@ class Area extends React.Component {
           <p className="area-title">{area.name} {area.name !== area.nickname ? `(${area.nickname})` : ''}</p>
           <p className="area-location">{area.location}</p>
           <p className="area-description">{area.about}</p>
-          <button className="area-button" onClick={this.viewListings}>View Listings</button>
+          <Link to={ `/areas/${area.id}` }><button  className="area-button" value={area.id} >View Listings</button></Link>
         </section>
     )
   }
