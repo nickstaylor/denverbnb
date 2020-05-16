@@ -3,6 +3,10 @@ import "./App.css";
 import Login from "../Login/Login";
 import Header from "../Header/Header";
 import AreaContainer from "../AreaContainer/AreaContainer";
+import MainPageContainer from "../MainPageContainer/MainPageContainer";
+
+
+
 import caphill from "../../images/CapHill.png";
 import lohi from "../../images/LoHi.png";
 import parkhill from "../../images/ParkHill.png";
@@ -100,7 +104,7 @@ class App extends Component {
                 <>
                   {" "}
                   <Header removeUser={this.removeUser} />{" "}
-                  <AreaContainer
+                  <MainPageContainer
                     user={this.state.user}
                     data={this.state.areas}
                   />{" "}
