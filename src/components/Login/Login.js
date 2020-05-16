@@ -104,7 +104,7 @@ class Login extends Component {
               <option value="vacation">Vacation</option>
               <option value="other">Other</option>
             </select>
-            <button
+            <button className="login-button"
               type="submit"
               onClick={(event) => this.checkForErrors(event)}
             >
