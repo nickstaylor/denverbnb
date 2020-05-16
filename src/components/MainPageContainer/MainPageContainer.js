@@ -30,7 +30,7 @@ return(
       <Route path='/areas' exact
         render = {() => <AreaContainer user={user} data={data}/> } 
       />
-      <Route path='/areas/:id' exact
+      <Route path='/areas/:id/listings' exact
         render = {({ match }) => {
           const { id } = match.params
           const uniqueArea = this.state.areas.find(area => area.id === parseInt(id))
