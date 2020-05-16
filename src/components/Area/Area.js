@@ -3,15 +3,16 @@ import "./Area.css";
 
 
 
-const Area = (props) => {
-console.log(props)
+const Area = ({area}) => {
+console.log(area)
     return (
-      <div className="area">
-        <section className="title-image">
-          <p className="area-title">{props.name}</p>
-          <img className="area-image" src={props.image} alt={props.name} />
+        <section className="area-box">
+          <img className="area-image" src={area.image} alt={area.name} />
+          <p className="area-title">{area.name} {area.name !== area.nickname ? `(${area.nickname})` : ''}</p>
+          <p className="area-location">{area.location}</p>
+          <p className="area-description">{area.about}</p>
+          <button className="area-button">View Listings</button>
         </section>
-      </div>
     )
 }
 

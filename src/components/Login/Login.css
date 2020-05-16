@@ -64,8 +64,8 @@ span {
       font-size: 20px;
   }
 
-  button {
-        width: 35%;
+  .login-button {
+      width: 35%;
       height: auto;
       background-color: #ADDBE4;
       margin-left: 57%;
