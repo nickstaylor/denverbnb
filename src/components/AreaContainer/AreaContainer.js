@@ -9,20 +9,19 @@ const AreaContainer = ({data, user}) => {
   const displayPics = data.map(area=>{
     return (
       <Area
-      name = {area.area}
-      image = {area.image}
+      area = {area}
       />
     )
 
   })
 
 return(
-  <div>
+  <div className="area-container">
     <div className="area-header">
       <h2>Denver NeighborHoods</h2>
-      <h4>Welcome, {user.userName}.  Find a great {user.userPurpose === 'other' ? '': user.userPurpose } rental in Denver!</h4>
+      <h4 className="personal-greeting">Welcome, <span>{user.userName}</span>.  Find a great {user.userPurpose === 'other' ? '': <span>{user.userPurpose}</span> } rental in Denver!</h4>
     </div>
-    <div className="area-container">
+    <div className="area-container-locations">
       {displayPics}
     </div>
   </div>
