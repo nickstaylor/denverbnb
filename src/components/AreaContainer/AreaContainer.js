@@ -4,11 +4,10 @@ import Area from '../Area/Area'
 
 
 const AreaContainer = ({data, user}) => {
-  console.log('user', user)
-  console.log('data', data)
   const displayPics = data.map(area=>{
     return (
       <Area
+      key = {area.id}
       area = {area}
       />
     )
