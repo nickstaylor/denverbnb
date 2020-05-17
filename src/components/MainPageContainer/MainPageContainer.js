@@ -47,9 +47,18 @@ return(
       <Route path='/areas/:id/listings/:listing_id' exact
       render = {({ match }) => {
         const { listing_id } = match.params
+        console.log('match', match)
+        const { id } = match.params
+        console.log(id)
+        const uniqueListing = this.state.areas.find(area => area.id === parseInt(id))
+        
+        .listings.find(listing => listing.listing_id === parseInt(listing_id))
+
         console.log(listing_id)
+        console.log('uniqueListing', uniqueListing)
+
         return (
-          <SingleBigListing />
+          <SingleBigListing {...uniqueListing}/>
         )
       }}
       />
