@@ -8,8 +8,10 @@ import { Switch, Route, Redirect } from "react-router-dom";
 const AllListings = (props)=>{
   console.log('AllListings', props)
 const individualListings = props.listings.map(listing => {
+  const imagePathA = `/repoImages/${listing.listing_id}_a.jpg`;
   return (
     <Listing
+    imageA={imagePathA}
     key={listing["listing_id"]}
     data={listing}
     favoriteListing={props.favoriteListing}
@@ -19,13 +21,11 @@ const individualListings = props.listings.map(listing => {
 
 
   return(
-      <div>
-      <h3>Hi there AllListings</h3>
-    <div>
+
+    <div className="area-container-locations">
     {individualListings}
     </div>
 
-    </div>
 
     )
 }
