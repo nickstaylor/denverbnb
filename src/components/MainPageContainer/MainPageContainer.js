@@ -51,7 +51,6 @@ return(
         const { id } = match.params
         console.log(id)
         const uniqueListing = this.state.areas.find(area => area.id === parseInt(id))
-        
         .listings.find(listing => listing.listing_id === parseInt(listing_id))
 
         console.log(listing_id)
