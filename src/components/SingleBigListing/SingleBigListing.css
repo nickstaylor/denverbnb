@@ -54,10 +54,16 @@ margin: 2%;
 
 .costPerNight {
   color: black;
-  margin-left: 18%;
+  margin-left: 10%;
 }
 
 .areaInfo {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 2em;
+  font-weight: 600;
+}
+
+.featureTitle {
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   font-size: 2em;
   font-weight: 600;

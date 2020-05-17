@@ -34,6 +34,7 @@ const SingleBigListing = (props) => {
         </span>
       </h3>
       <p className="areaInfo">{`${props.address.street}, ${props.address.zip}`}</p>
+      <p className="featureTitle">Check out some features:</p>
       {features}
     </div>
   </div>
