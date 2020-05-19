@@ -4,6 +4,7 @@ import Login from "../Login/Login";
 import Header from "../Header/Header";
 import AreaContainer from "../AreaContainer/AreaContainer";
 import MainPageContainer from "../MainPageContainer/MainPageContainer";
+import { getAreas, getNeighborhood, getListings } from '../../apiCalls/apiCalls'
 
 
 
@@ -28,18 +29,14 @@ class App extends Component {
   componentDidMount = () => {
     const array = [];
     const baseURL = "https://vrad-api.herokuapp.com";
-    fetch(`${baseURL}/api/v1/areas`)
-      .then((response) => response.json())
+      getAreas()
       .then((someInfo) => {
         someInfo.areas.map((neighborhood) => {
-          return fetch(`${baseURL}${neighborhood.details}`)
-            .then((moreInfo) => moreInfo.json())
+          getNeighborhood(neighborhood.details)
             .then((singleNeighborhood) => {
               const listingPromises = singleNeighborhood.listings.map(
-                (listing) => {
-                  return fetch(`${baseURL}${listing}`).then((listingData) =>
-                    listingData.json()
-                  );
+                listing => {
+                  return getListings(listing)
                 }
               );
               return Promise.all(listingPromises)
@@ -73,9 +70,9 @@ class App extends Component {
                 })
                 .then((array) => this.setState({ areas: array }))
                 .catch((error) => this.setState({ error }));
-            });
+              });
+          });
         });
-      });
   };
 
   addUser = (person) => {
@@ -89,6 +86,7 @@ class App extends Component {
 
 
   render() {
+    console.log('areas', this.state.areas)
     return (
       <section className="App">
         <Switch>
