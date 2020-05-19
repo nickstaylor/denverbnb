@@ -22,8 +22,8 @@ font-size: 1.5em;
 
 
 .personal-greeting span {
-  font-style: italic;
-  text-transform: capitalize;
+  /* font-style: italic; */
+  /* text-transform: capitalize; */
   color: #4037A7;
 }
 
