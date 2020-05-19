@@ -7,7 +7,6 @@ import SingleBigListing from '../SingleBigListing/SingleBigListing'
 
 import { Switch, Route, Redirect } from "react-router-dom";
 
-
 class MainPageContainer extends React.Component {
   constructor(props) {
     super(props)
@@ -17,7 +16,6 @@ class MainPageContainer extends React.Component {
       favoriteListings: []
     }
   }
-
 
 favoriteListing = (value) => {
   if (!this.state.favoriteListings.includes(value)){
@@ -53,7 +51,6 @@ return(
       <Route path='/areas/:id/listings' exact
         render = {({ match }) => {
           const { id } = match.params
-          console.log('listing ID', id)
           const uniqueArea = this.state.areas.find(area => area.id === parseInt(id))
           return (
             <AllListings {...uniqueArea} user={user} favoriteListing={this.favoriteListing} />

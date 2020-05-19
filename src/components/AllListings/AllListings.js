@@ -21,7 +21,6 @@ const AllListings = (props)=>{
 
 
   return(
-
     <div className="area-container-locations">
       <div className="area-header">
       <h2><Link to="/areas" exact>Denver NeighborHoods</Link> > {props.name}</h2>
@@ -29,8 +28,6 @@ const AllListings = (props)=>{
     </div>
     {individualListings}
     </div>
-
-
     )
 }
 
