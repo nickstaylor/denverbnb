@@ -3,10 +3,8 @@ import "./MainPageContainer.css";
 import AreaContainer from '../AreaContainer/AreaContainer'
 import AllListings from '../AllListings/AllListings'
 import SingleBigListing from '../SingleBigListing/SingleBigListing'
-// import Favorites from '../Favorites/Favorites'
 
 import { Switch, Route, Redirect } from "react-router-dom";
-
 
 class MainPageContainer extends React.Component {
   constructor(props) {
@@ -18,54 +16,42 @@ class MainPageContainer extends React.Component {
     }
   }
 
-
-favoriteListing = (event) => {
-  const { value } = event.target
-  console.log('favoriteListing', value)
-  if (!this.state.favoriteListings.includes(value)){
-  this.setState({favoriteListings: [...this.state.favoriteListings, value]})
-} else {
-  let newFavorites = this.state.favoriteListings.filter(listing=>{
-    return listing !== value
+favoriteListing = (value) => {
+  const foundListing = this.state.favoriteListings.find(dataObj => dataObj.listing_id === value.listing_id)
+  if (!foundListing) {
+      this.setState({favoriteListings: [...this.state.favoriteListings, value]})
+  } else if (foundListing) {
+  let newFavorites = this.state.favoriteListings.filter(listing => {
+    return listing.listing_id !== value.listing_id
   })
   this.setState({favoriteListings: newFavorites})
+  console.log(foundListing)
+ }
 }
-}
+
 
 render() {
-  console.log('mainpagestate', this.state.favoriteListings)
   const { user } = this.props;
   const { data } = this.props;
-  console.log('data', data)
-
 return(
-  <div className="area-container">
-    <div className="area-header">
-      <h2>Denver Neighborhoods</h2>
-      <h4 className="personal-greeting">Welcome, <span>{user.userName}</span>.  Find a great {user.userPurpose === 'other' ? '': user.userPurpose} rental in Denver!</h4>
-    </div>
+  <div className="area-container" title="areaContainer">
     <Switch >
       <Route path='/areas/:id/listings/:listing_id' exact
       render = {({ match }) => {
         const { listing_id } = match.params
-        console.log('match', match)
         const { id } = match.params
-        console.log(id)
         const uniqueListing = this.state.areas.find(area => area.id === parseInt(id))
-        .listings.find(listing => listing.listing_id === parseInt(listing_id))
-
-        console.log(listing_id)
-        console.log('uniqueListing', uniqueListing)
+        const areaName = uniqueListing.name
+        const bigListing = uniqueListing.listings.find(listing => listing.listing_id === parseInt(listing_id))
 
         return (
-          <SingleBigListing {...uniqueListing}/>
+          <SingleBigListing {...bigListing} key={bigListing.listing_id} areaName={areaName} user={user} favoriteListing={this.favoriteListing}/>
         )
       }}
       />
       <Route path='/areas/:id/listings' exact
         render = {({ match }) => {
           const { id } = match.params
-          console.log('listing ID', id)
           const uniqueArea = this.state.areas.find(area => area.id === parseInt(id))
           return (
             <AllListings {...uniqueArea} user={user} favoriteListing={this.favoriteListing} />
@@ -75,6 +61,9 @@ return(
       <Route path='/areas' exact
         render = {() => <AreaContainer user={user} data={data}/> }
       />
+      {//<Route path='/favorites' exact
+      //render = { () => <AllListings {[...this.props.favoriteListings]} user={user} favoriteListing={this.favoriteListing} />} />
+}
     </Switch>
   </div>
 

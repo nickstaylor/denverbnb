@@ -1,23 +1,26 @@
 import React from "react";
 import "./SingleBigListing.css";
-// import starOutline from "../../../public/star-outline.svg"
 
 import { Link } from "react-router-dom";
 
 
 const SingleBigListing = (props) => {
+  const { user } = props
   const imagePathA = `/repoImages/${props.listing_id}_a.jpg`;
   const imagePathB = `/repoImages/${props.listing_id}_b.jpg`;
   const imagePathC = `/repoImages/${props.listing_id}_c.jpg`;
-    console.log('SingleBigListing', props)
-  
-    const features = props.details.features.map(feature => {
-    return (
-    <p className="someFeatures">{`-${feature}`}</p>
+  console.log(props)
+  const features = props.details.features.map(feature => {
+  return (
+  <p className="someFeatures">{`-${feature}`}</p>
     )
   })
     return(
   <div className="entireSingleBigListing">
+    <div className="area-header">
+    <h2><Link to="/areas">Denver NeighborHoods</Link> ><Link to={`/areas/${props.area_id}/listings`}>{props.areaName}</Link> > {props.name}</h2>
+    <h4 className="personal-greeting">Welcome, <span>{user.userName}</span>.  Find a great {user.userPurpose === 'other' ? '': <span>{user.userPurpose}</span> } rental in Denver!</h4>
+    </div>
     <div className="leftSideContainer">
       <h3 className="bigListingName">{props.name}</h3>
       <div className="bigListingImageContainer">

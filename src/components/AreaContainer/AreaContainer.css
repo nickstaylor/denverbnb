@@ -1,7 +1,8 @@
 .area-container {
-  background-image: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5116421568627452) 0%), url("https://www.monaco-denver.com/images/1700-960/denver-downtown-buildings-mountains-boutique-33b2fcd3.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5116421568627452) 0%), url(../../images/denver.jpg);
+  background-repeat: repeat;
+  height: 100vh;
+  overflow: scroll;
 }
 
 
@@ -15,11 +16,15 @@
 }
 
 .personal-greeting {
-margin-left: 50px;
-font-size: 1.5em;
+  margin-right: 10px;
+  font-size: 1.2em;
+  margin-top: -10px;
 }
-
-
+.area-header h2 {
+  margin-left: 10px;
+  font-weight: bolder;
+  font-size: 1.7em;
+}
 
 .personal-greeting span {
   /* font-style: italic; */
