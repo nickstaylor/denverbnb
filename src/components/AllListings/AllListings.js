@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 
 const AllListings = (props)=>{
+  console.log(props)
   const { user } = props
   const individualListings = props.listings.map(listing => {
     const imagePathA = `/repoImages/${listing.listing_id}_a.jpg`;
@@ -18,7 +19,6 @@ const AllListings = (props)=>{
       />
     )
   })
-
 
   return(
     <div className="area-container-locations">

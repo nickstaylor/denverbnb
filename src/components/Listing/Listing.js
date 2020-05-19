@@ -8,6 +8,7 @@ import starFilled from "../../images/pinkStar.png"
 class Listing extends React.Component {
   constructor(props){
     super(props)
+    console.log(props)
     this.state = {
       isFavorited: false,
       starFilled: starFilled,
@@ -17,14 +18,19 @@ class Listing extends React.Component {
   }
 
   favoriteThisListing = (event) => {
+
     let imageName;
-    const value = event.target.id;
+    const favoritedListing = {
+      ...this.props.data,
+      image: this.props.imageA,
+    }
+
     this.state.isFavorited ? 
     imageName = "starOutline" :
     imageName = "starFilled"
     this.setState({isFavorited: !this.state.isFavorited,
                     starImage: imageName})
-    this.props.favoriteListing(value)
+    this.props.favoriteListing(favoritedListing)
   }
 
   render() {

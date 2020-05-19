@@ -18,7 +18,8 @@ const SingleBigListing = (props) => {
     return(
   <div className="entireSingleBigListing">
     <div className="area-header">
-    <h2><Link to="/areas">Denver NeighborHoods</Link> ><Link to={`/areas/${props.area_id}/listings`}>{props.areaName}</Link> > {props.name}</h2>      <h4 className="personal-greeting">Welcome, <span>{user.userName}</span>.  Find a great {user.userPurpose === 'other' ? '': <span>{user.userPurpose}</span> } rental in Denver!</h4>
+    <h2><Link to="/areas">Denver NeighborHoods</Link> ><Link to={`/areas/${props.area_id}/listings`}>{props.areaName}</Link> > {props.name}</h2>
+    <h4 className="personal-greeting">Welcome, <span>{user.userName}</span>.  Find a great {user.userPurpose === 'other' ? '': <span>{user.userPurpose}</span> } rental in Denver!</h4>
     </div>
     <div className="leftSideContainer">
       <h3 className="bigListingName">{props.name}</h3>

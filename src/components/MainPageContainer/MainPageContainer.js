@@ -17,20 +17,23 @@ class MainPageContainer extends React.Component {
   }
 
 favoriteListing = (value) => {
-  if (!this.state.favoriteListings.includes(value)){
-  this.setState({favoriteListings: [...this.state.favoriteListings, value]})
-} else {
-  let newFavorites = this.state.favoriteListings.filter(listing=>{
-    return listing !== value
+  const foundListing = this.state.favoriteListings.find(dataObj => dataObj.listing_id === value.listing_id)
+  if (!foundListing) {
+      this.setState({favoriteListings: [...this.state.favoriteListings, value]})
+  } else if (foundListing) {
+  let newFavorites = this.state.favoriteListings.filter(listing => {
+    return listing.listing_id !== value.listing_id
   })
   this.setState({favoriteListings: newFavorites})
+  console.log(foundListing)
+ }
 }
-}
+
 
 render() {
   const { user } = this.props;
   const { data } = this.props;
-
+console.log(this.state.favoriteListings)
 return(
   <div className="area-container" title="areaContainer">
     <Switch >
@@ -59,6 +62,8 @@ return(
       <Route path='/areas' exact
         render = {() => <AreaContainer user={user} data={data}/> }
       />
+      <Route path='/favorites' exact
+      render = { () => <AllListings {[...this.props.favoriteListings]} user={user} favoriteListing={this.favoriteListing} />} />
     </Switch>
   </div>
 
