@@ -49,16 +49,16 @@ describe('Listing', ()=>{
       </BrowserRouter>)
 
      fireEvent.click(getByAltText('favorite'))
-     expect(getByAltText('favorite', {src:'pinkStar.png'})) 
-     expect(mockFavoriteListing).toHaveBeenCalled() 
-     
+     expect(getByAltText('favorite', {src:'pinkStar.png'}))
+     expect(mockFavoriteListing).toHaveBeenCalled()
+     // fireEvent.clicl(getByText("Favorites"))
+     // expect(window.location.href).toBe("http://localhost/favorites");
+     //expect a certain listing to be in the document
+     // another event that where you click on favorites, then we check to see if
+     //specific listing is in favorites
+
      fireEvent.click(getByAltText('favorite'))
      expect(getByAltText('favorite', {src:'star-outline.svg'}))
-     expect(mockFavoriteListing).toHaveBeenCalled() 
+     expect(mockFavoriteListing).toHaveBeenCalled()
     });
 })
-
-
-
-
-
