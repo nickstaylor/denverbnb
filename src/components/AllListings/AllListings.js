@@ -23,7 +23,7 @@ const AllListings = (props)=>{
   return(
     <div className="area-container-locations">
       <div className="area-header">
-      <h2><Link to="/areas" exact>Denver NeighborHoods</Link> > {props.name}</h2>
+      <h2><Link to="/areas" exact>Denver Neighborhoods</Link> > {props.name}</h2>
       <h4 className="personal-greeting">Welcome, <span>{user.userName}</span>.  Find a great {user.userPurpose === 'other' ? '': <span>{user.userPurpose}</span> } rental in Denver!</h4>
     </div>
     {individualListings}

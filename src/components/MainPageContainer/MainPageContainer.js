@@ -33,7 +33,6 @@ favoriteListing = (value) => {
 render() {
   const { user } = this.props;
   const { data } = this.props;
-console.log(this.state.favoriteListings)
 return(
   <div className="area-container" title="areaContainer">
     <Switch >
@@ -46,7 +45,7 @@ return(
         const bigListing = uniqueListing.listings.find(listing => listing.listing_id === parseInt(listing_id))
 
         return (
-          <SingleBigListing {...bigListing} areaName={areaName} user={user} favoriteListing={this.favoriteListing}/>
+          <SingleBigListing {...bigListing} key={bigListing.listing_id} areaName={areaName} user={user} favoriteListing={this.favoriteListing}/>
         )
       }}
       />
@@ -62,8 +61,9 @@ return(
       <Route path='/areas' exact
         render = {() => <AreaContainer user={user} data={data}/> }
       />
-      <Route path='/favorites' exact
-      render = { () => <AllListings {[...this.props.favoriteListings]} user={user} favoriteListing={this.favoriteListing} />} />
+      {//<Route path='/favorites' exact
+      //render = { () => <AllListings {[...this.props.favoriteListings]} user={user} favoriteListing={this.favoriteListing} />} />
+}
     </Switch>
   </div>
 
