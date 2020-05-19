@@ -19,9 +19,7 @@ class MainPageContainer extends React.Component {
   }
 
 
-favoriteListing = (event) => {
-  const { value } = event.target
-  console.log('favoriteListing', value)
+favoriteListing = (value) => {
   if (!this.state.favoriteListings.includes(value)){
   this.setState({favoriteListings: [...this.state.favoriteListings, value]})
 } else {
@@ -33,31 +31,22 @@ favoriteListing = (event) => {
 }
 
 render() {
-  console.log('mainpagestate', this.state.favoriteListings)
   const { user } = this.props;
   const { data } = this.props;
 
 return(
   <div className="area-container">
-    <div className="area-header">
-      <h2>Denver NeighborHoods</h2>
-      <h4 className="personal-greeting">Welcome, <span>{user.userName}</span>.  Find a great {user.userPurpose === 'other' ? '': <span>{user.userPurpose}</span> } rental in Denver!</h4>
-    </div>
     <Switch >
       <Route path='/areas/:id/listings/:listing_id' exact
       render = {({ match }) => {
         const { listing_id } = match.params
-        console.log('match', match)
         const { id } = match.params
-        console.log(id)
         const uniqueListing = this.state.areas.find(area => area.id === parseInt(id))
-        .listings.find(listing => listing.listing_id === parseInt(listing_id))
-
-        console.log(listing_id)
-        console.log('uniqueListing', uniqueListing)
+        const areaName = uniqueListing.name
+        const bigListing = uniqueListing.listings.find(listing => listing.listing_id === parseInt(listing_id))
 
         return (
-          <SingleBigListing {...uniqueListing}/>
+          <SingleBigListing {...bigListing} areaName={areaName} user={user} favoriteListing={this.favoriteListing}/>
         )
       }}
       />
