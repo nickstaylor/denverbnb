@@ -7,7 +7,6 @@ import starFilled from "../../images/pinkStar.png"
 
 class Listing extends React.Component {
   constructor(props){
-    console.log('listingProps', props)
     super(props)
     this.state = {
       isFavorited: false,
@@ -34,7 +33,7 @@ class Listing extends React.Component {
       <img id ={this.props.data.listing_id} src = {this.state[this.state.starImage]} className="favorite-star" alt="favorite"
         onClick={this.favoriteThisListing} />
       <h3>{this.props.data.name}</h3>
-      <img className="listing-image" src = {this.props.imageA} />
+      <img className="listing-image" src = {this.props.imageA} alt={this.props.data.name} />
       <Link to={`/areas/${this.props.data.area_id}/listings/${this.props.data.listing_id}`}><button className="listing-button">Full Listing!</button></Link>
     </div>
   )
