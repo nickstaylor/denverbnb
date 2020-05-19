@@ -3,7 +3,6 @@ import "./MainPageContainer.css";
 import AreaContainer from '../AreaContainer/AreaContainer'
 import AllListings from '../AllListings/AllListings'
 import SingleBigListing from '../SingleBigListing/SingleBigListing'
-// import Favorites from '../Favorites/Favorites'
 
 import { Switch, Route, Redirect } from "react-router-dom";
 
@@ -33,7 +32,7 @@ render() {
   const { data } = this.props;
 
 return(
-  <div className="area-container">
+  <div className="area-container" title="areaContainer">
     <Switch >
       <Route path='/areas/:id/listings/:listing_id' exact
       render = {({ match }) => {

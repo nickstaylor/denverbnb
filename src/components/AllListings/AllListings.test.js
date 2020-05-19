@@ -1,8 +1,8 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect'
 import AllListings from './AllListings';
-import { BrowserRouter, MemoryRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 describe('AllListings', ()=>{
   let area;
   let listing1
@@ -38,10 +38,10 @@ describe('AllListings', ()=>{
     const { getByText, getAllByText, getAllByRole } = render(<BrowserRouter><AllListings
                                     {...area} user={user}/>
                                     </BrowserRouter>)
-    const header = (getByText(("Khalid"), {options: { exact: false}}))
+    const header = getByText("Khalid")
       expect(header).toBeInTheDocument();
       expect(getAllByRole('img', {alt: 'favorite'}))
-      expect(getAllByText('Full Listing')).toHaveLength(2);
+      expect(getAllByText('Full Listing!')).toHaveLength(2);
   })
 })
 

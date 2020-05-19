@@ -6,8 +6,7 @@ import {Router, Link, Redirect} from 'react-router-dom'
 class Area extends React.Component {
   constructor (props) {
     super( props )
-    console.log("props", props)
-    console.log("area", props.area)
+    this.state ={}
   }
 
   render() {
