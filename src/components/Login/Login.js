@@ -70,32 +70,36 @@ class Login extends Component {
       {this.state.completedForm && <Redirect to='/areas' />}
         <section className="login-form-container">
           <form className="login-form">
-            <label htmlFor="name">Name</label>
+            <label htmlFor="userName">Name</label>
             {this.state.userNameError && (
               <p className="error-message">Please enter a name.</p>
             )}
             <input
               type="text"
               name="userName"
+              id="userName"
+              placeholder="name"
               value={this.state.userName}
               onChange={this.handleChange}
             />
             {this.state.userEmailError && (
               <p className="error-message">Please enter an email address.</p>
             )}
-            <label htmlFor="email">Email</label>
+            <label htmlFor="userEmail">Email</label>
             <input
               type="text"
               name="userEmail"
+              id="userEmail"
+              placeholder="email"
               value={this.state.userEmail}
               onChange={this.handleChange}
             />
-            <label htmlFor="purpose">Purpose</label>
+            <label htmlFor="userPurpose">Purpose</label>
             {this.state.userPurposeError && (
               <p className="error-message">Please enter a purpose.</p>
             )}
             <select
-              id="purpose"
+              id="userPurpose"
               name="userPurpose"
               onChange={this.handleChange}
             >

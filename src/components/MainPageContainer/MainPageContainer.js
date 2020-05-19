@@ -36,12 +36,13 @@ render() {
   console.log('mainpagestate', this.state.favoriteListings)
   const { user } = this.props;
   const { data } = this.props;
+  console.log('data', data)
 
 return(
   <div className="area-container">
     <div className="area-header">
-      <h2>Denver NeighborHoods</h2>
-      <h4 className="personal-greeting">Welcome, <span>{user.userName}</span>.  Find a great {user.userPurpose === 'other' ? '': <span>{user.userPurpose}</span> } rental in Denver!</h4>
+      <h2>Denver Neighborhoods</h2>
+      <h4 className="personal-greeting">Welcome, <span>{user.userName}</span>.  Find a great {user.userPurpose === 'other' ? '': user.userPurpose} rental in Denver!</h4>
     </div>
     <Switch >
       <Route path='/areas/:id/listings/:listing_id' exact
