@@ -4,7 +4,6 @@ import Area from '../Area/Area'
 
 
 const AreaContainer = ({data, user, images}) => {
-  console.log(images)
   const displayPics = data.map(area=>{
     let image
     let areaNickname = area.nickname.split(" ").join('')
@@ -13,6 +12,7 @@ const AreaContainer = ({data, user, images}) => {
       image = item
       }
     })
+
     return (
       <Area
       key = {area.id}
