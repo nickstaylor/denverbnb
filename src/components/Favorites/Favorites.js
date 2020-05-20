@@ -1,13 +1,10 @@
 import React from "react";
 import Listing from "../Listing/Listing"
 
-import { Link } from "react-router-dom";
-
 
 class Favorites extends React.Component{
   constructor(props){
     super(props)
-      console.log(props)
     this.state = {
       favoriteListings: this.props.favorites
 
@@ -20,13 +17,10 @@ updateFavoriteState = (id) => {
   })
   this.setState({favoriteListings: [...updatedFavorites]})
   this.props.updateFavoritesfromFavorites(updatedFavorites)
-  console.log('stateFavoriteListings', this.state.favoriteListings)
-  console.log('updatedFavorites', updatedFavorites);
 }
 
 
 render() {
-  console.log('stateFavoriteListings', this.state.favoriteListings)
   const individualListings = this.props.favorites.map(listing => {
     const imagePathA = `/repoImages/${listing.listing_id}_a.jpg`;
     return (

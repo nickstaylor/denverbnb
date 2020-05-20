@@ -1,6 +1,6 @@
 import React from "react";
 import "./Listing.css";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import starOutline from "../../images/star-outline.svg"
 import starFilled from "../../images/pinkStar.png"
@@ -8,35 +8,32 @@ import starFilled from "../../images/pinkStar.png"
 class Listing extends React.Component {
   constructor(props){
     super(props)
-    console.log(props)
       this.state = {
       isFavorited: this.props.favorite,
       starFilled: starFilled,
       starOutline: starOutline,
       starImage: (this.props.favorite ? "starFilled" : "starOutline")
-
-
     }
   }
 
 
   favoriteThisListing = (event) => {
     let id = event.target.id
-    let fromFavorites = false;
-    if (this.props.comingFromFavorites){
-      fromFavorites = true
-    }
-    let imageName;
     const favoritedListing = {
       ...this.props.data,
       image: this.props.imageA,
     }
 
+    let imageName;
     this.state.isFavorited ?
     imageName = "starOutline" :
     imageName = "starFilled"
     this.setState({isFavorited: !this.state.isFavorited,
                     starImage: imageName})
+    let fromFavorites = false;
+    if (this.props.comingFromFavorites){
+      fromFavorites = true
+    }
     this.props.favoriteListing(favoritedListing, fromFavorites)
     if (fromFavorites){
       this.props.updateFavoriteState(id)
@@ -45,7 +42,6 @@ class Listing extends React.Component {
 
 
   render() {
-    console.log(this.props.comingFromFavorites)
   return(
     <div className="individual-listing">
       <img id ={this.props.data.listing_id} src = {this.state[this.state.starImage]} className="favorite-star" alt="favorite"

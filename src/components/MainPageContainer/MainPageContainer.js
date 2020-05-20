@@ -3,15 +3,13 @@ import "./MainPageContainer.css";
 import AreaContainer from '../AreaContainer/AreaContainer'
 import AllListings from '../AllListings/AllListings'
 import SingleBigListing from '../SingleBigListing/SingleBigListing'
-import Header from '../Header/Header'
 import Favorites from "../Favorites/Favorites"
 
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 class MainPageContainer extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props)
     this.state = {
       areas: props.data,
     }
@@ -36,7 +34,7 @@ return(
         const bigListing = uniqueListing.listings.find(listing => listing.listing_id === parseInt(listing_id))
 
         return (
-          <SingleBigListing {...bigListing} key={bigListing.listing_id} areaName={areaName} user={user} favoriteListing={this.favoriteListing}/>
+          <SingleBigListing {...bigListing} favoriteListingsID={this.props.favoriteListingsID} key={bigListing.listing_id} areaName={areaName} user={user} favoriteListing={this.favoriteListing}/>
         )
       }}
       />
@@ -45,12 +43,12 @@ return(
           const { id } = match.params
           const uniqueArea = this.state.areas.find(area => area.id === parseInt(id))
           return (
-            <AllListings {...uniqueArea} user={user} favoriteListing={this.favoriteListing} />
+            <AllListings {...uniqueArea} user={user} favoriteListingsID={this.props.favoriteListingsID} favoriteListing={this.favoriteListing} />
           )
         }}
       />
       <Route path='/areas' exact
-        render = {() => <AreaContainer user={user} data={data}/> }
+        render = {() => <AreaContainer user={user} images={this.props.images} data={data}/> }
       />
       <Route path= '/favorites' exact
       render = { () => <Favorites {...this.state.favoriteListings} user={user} favoriteListing={this.favoriteListing} />}

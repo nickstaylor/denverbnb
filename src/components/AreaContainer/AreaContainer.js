@@ -3,12 +3,21 @@ import "./AreaContainer.css";
 import Area from '../Area/Area'
 
 
-const AreaContainer = ({data, user}) => {
+const AreaContainer = ({data, user, images}) => {
   const displayPics = data.map(area=>{
+    let image
+    let areaNickname = area.nickname.split(" ").join('')
+    images.forEach(item=>{
+      if (item.includes(areaNickname)){
+      image = item
+      }
+    })
+
     return (
       <Area
       key = {area.id}
       area = {area}
+      image = {image}
       />
     )
 
