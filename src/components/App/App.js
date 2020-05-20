@@ -4,6 +4,7 @@ import Login from "../Login/Login";
 import Header from "../Header/Header";
 import AreaContainer from "../AreaContainer/AreaContainer";
 import MainPageContainer from "../MainPageContainer/MainPageContainer";
+import Favorites from "../Favorites/Favorites"
 import { getAreas, getNeighborhood, getListings } from '../../apiCalls/apiCalls'
 
 
@@ -21,7 +22,8 @@ class App extends Component {
     this.state = {
       user: "",
       areas: [],
-      favorites: [],
+      favoriteListingsID: [], // just the id's of the listings
+      favoriteListings: [], //object instances of listing
       error: "",
     };
   }
@@ -84,9 +86,54 @@ class App extends Component {
     return <Redirect to="/" exact />;
   };
 
+  favoriteListing = (value, fromFavorites) =>{
+    console.log('unfavorited')
+    this.updateFavorites(value, fromFavorites)
+  }
+
+  updateFavorites = (value, fromFavorites) => {
+    let id = value.listing_id
+    console.log(id)
+      if (!this.state.favoriteListingsID.includes(id)){
+      this.setState({favoriteListingsID: [...this.state.favoriteListingsID, id]})
+    } else {
+      let newFavorites = this.state.favoriteListingsID.filter(listing=>{
+        return listing !== id
+      })
+      this.setState({favoriteListingsID: newFavorites})
+      console.log(this.state.favoriteListingsID)
+      if (fromFavorites){
+        console.log('hey')
+        this.loadFavorites()
+      }
+    }
+    }
+
+    updateFavoritesfromFavorites = (array) => {
+      this.setState({favoriteListings: array})
+    }
+
+    loadFavorites = () => {
+      let favorites = this.state.areas.reduce((acc, area)=>{
+        area.listings.forEach(listing=>{
+            this.state.favoriteListingsID.forEach(id=>{
+              if (listing.listing_id === id ){
+                acc.push(listing)
+              }
+            })
+          })
+        return acc
+      },[])
+      this.setState({favoriteListings: favorites})
+      console.log(this.state.favoriteListings)
+
+    }
+
 
   render() {
     console.log('areas', this.state.areas)
+    console.log('favoritesID on App', this.state.favoriteListingsID)
+    console.log('favoriteListings', this.state.favoriteListings)
     return (
       <section className="App">
         <Switch>
@@ -101,10 +148,12 @@ class App extends Component {
               render={() => (
                 <>
                   {" "}
-                  <Header removeUser={this.removeUser} />{" "}
+                  <Header removeUser={this.removeUser} numberofFavorites={this.state.favoriteListingsID} loadFavorites={this.loadFavorites} />{" "}
                   <MainPageContainer
+
                     user={this.state.user}
                     data={this.state.areas}
+                    updateFavorites={this.updateFavorites}
                   />{" "}
                 </>
               )}
@@ -112,6 +161,22 @@ class App extends Component {
           ) : (
             <Redirect to="/" exact />
           )}
+          {
+          <Route path= '/favorites'
+            render = { () => (
+              <>
+                {" "}
+                <Header removeUser={this.removeUser} numberofFavorites={this.state.favoriteListingsID} loadFavorites={this.loadFavorites} />{" "}
+                <Favorites
+                  updateFavoritesfromFavorites={this.updateFavoritesfromFavorites}
+                  favorites={this.state.favoriteListings}
+                  user={this.state.user}
+                  updatesFavorites={this.updateFavorites}
+                  favoriteListing={this.favoriteListing}
+                />{" "}
+              </>
+            )}
+          />}
         </Switch>
       </section>
     );
