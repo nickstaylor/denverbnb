@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 class SingleBigListing extends React.Component {
 constructor(props){
   super(props)
-  console.log(props)
     this.state = {
     isFavorited: this.props.favorite,
     starFilled: starFilled,
@@ -18,12 +17,9 @@ constructor(props){
 }
 
 favoriteThisListing = (event) => {
-  let id = event.target.id
-  console.log(this.props)
   const favoritedListing = {
     listing_id: this.props.listing_id
   }
-  console.log('favoritedListing', favoritedListing)
 
   let imageName;
   this.state.isFavorited ?
@@ -32,10 +28,8 @@ favoriteThisListing = (event) => {
   this.setState({isFavorited: !this.state.isFavorited,
                   starImage: imageName})
   this.props.favoriteListing(favoritedListing)
-  // if (fromFavorites){
-  //   this.props.updateFavoriteState(id)
-  // }
 }
+
   render(){
     const { user } = this.props
     const imagePathA = `/repoImages/${this.props.listing_id}_a.jpg`;
@@ -61,9 +55,9 @@ favoriteThisListing = (event) => {
         onClick={this.favoriteThisListing}
       />
       <div className="bigListingImageContainer">
-        <img className="bigListingImage" src={imagePathA} />
-        <img className="bigListingImage" src={imagePathB} />
-        <img className="bigListingImage" src={imagePathC} />
+        <img className="bigListingImage" src={imagePathA} alt={this.props.name}/>
+        <img className="bigListingImage" src={imagePathB} alt={this.props.name}/>
+        <img className="bigListingImage" src={imagePathC} alt={this.props.name}/>
       </div>
     </div>
     <div className="rightSideContainer">
