@@ -1,28 +1,65 @@
 import React from "react";
 import "./SingleBigListing.css";
+import starOutline from "../../images/star-outline.svg"
+import starFilled from "../../images/pinkStar.png"
 
 import { Link } from "react-router-dom";
 
-
-const SingleBigListing = (props) => {
-  const { user } = props
-  const imagePathA = `/repoImages/${props.listing_id}_a.jpg`;
-  const imagePathB = `/repoImages/${props.listing_id}_b.jpg`;
-  const imagePathC = `/repoImages/${props.listing_id}_c.jpg`;
+class SingleBigListing extends React.Component {
+constructor(props){
+  super(props)
   console.log(props)
-  const features = props.details.features.map(feature => {
-  return (
-  <p className="someFeatures">{`-${feature}`}</p>
-    )
-  })
+    this.state = {
+    isFavorited: this.props.favorite,
+    starFilled: starFilled,
+    starOutline: starOutline,
+    starImage: (this.props.favorite ? "starFilled" : "starOutline")
+  }
+}
+
+favoriteThisListing = (event) => {
+  let id = event.target.id
+  console.log(this.props)
+  const favoritedListing = {
+    listing_id: this.props.listing_id
+  }
+  console.log('favoritedListing', favoritedListing)
+
+  let imageName;
+  this.state.isFavorited ?
+  imageName = "starOutline" :
+  imageName = "starFilled"
+  this.setState({isFavorited: !this.state.isFavorited,
+                  starImage: imageName})
+  this.props.favoriteListing(favoritedListing)
+  // if (fromFavorites){
+  //   this.props.updateFavoriteState(id)
+  // }
+}
+  render(){
+    const { user } = this.props
+    const imagePathA = `/repoImages/${this.props.listing_id}_a.jpg`;
+    const imagePathB = `/repoImages/${this.props.listing_id}_b.jpg`;
+    const imagePathC = `/repoImages/${this.props.listing_id}_c.jpg`;
+    const features = this.props.details.features.map(feature => {
+      return (
+        <p className="someFeatures">{`-${feature}`}</p>
+      )
+    })
+
+
     return(
   <div className="entireSingleBigListing">
     <div className="area-header">
-    <h2><Link to="/areas">Denver NeighborHoods</Link> ><Link to={`/areas/${props.area_id}/listings`}>{props.areaName}</Link> > {props.name}</h2>
-    <h4 className="personal-greeting">Welcome, <span>{user.userName}</span>.  Find a great {user.userPurpose === 'other' ? '': <span>{user.userPurpose}</span> } rental in Denver!</h4>
+    <h2><Link to="/areas">Denver NeighborHoods</Link> ><Link to={`/areas/${this.props.area_id}/listings`}>{this.props.areaName}</Link> > {this.props.name}</h2>
+    <h4 className="personal-greeting">Welcome, <span>{user.userName}</span>.this.  Find a great {user.userPurpose === 'other' ? '': <span>{user.userPurpose}</span> } rental in Denver!</h4>
     </div>
     <div className="leftSideContainer">
-      <h3 className="bigListingName">{props.name}</h3>
+      <h3 className="bigListingName">{this.props.name}</h3>
+      <img id ={this.props.listing_id} src = {this.state[this.state.starImage]}
+        className="favorite-star-big-listing" alt="favorite-big-listing"
+        onClick={this.favoriteThisListing}
+      />
       <div className="bigListingImageContainer">
         <img className="bigListingImage" src={imagePathA} />
         <img className="bigListingImage" src={imagePathB} />
@@ -31,17 +68,18 @@ const SingleBigListing = (props) => {
     </div>
     <div className="rightSideContainer">
       <h3 className="bigListingBedBathCount">{
-        `${props.details.beds}beds-${props.details.baths}baths`
+        `${this.props.details.beds}beds-${this.props.details.baths}baths`
         }<span className="costPerNight">
-        {`$${props.details.cost_per_night}perNight`}
+        {`$${this.props.details.cost_per_night}perNight`}
         </span>
       </h3>
-      <p className="areaInfo">{`${props.address.street}, ${props.address.zip}`}</p>
+      <p className="areaInfo">{`${this.props.address.street}, ${this.props.address.zip}`}</p>
       <p className="featureTitle">Check out some features:</p>
       {features}
     </div>
   </div>
   )
+}
 }
 
 export default SingleBigListing;
