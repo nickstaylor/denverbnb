@@ -36,6 +36,7 @@ width: 120px;
 font-size: .9em;
 font-weight: bold;
 transition: all 0.2s ease-in-out;
+margin-top: 5px;
 }
 
 .individual-listing h3 {
@@ -64,4 +65,3 @@ transform: scale(1.1);
 .favorite-star:hover {
 transform: scale(1.1);
 }
-
