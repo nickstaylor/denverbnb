@@ -1,19 +1,13 @@
 import React from "react";
 import "./Area.css";
-import { Router, Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-class Area extends React.Component {
-  constructor (props) {
-    console.log('area', props)
-    super( props )
-    this.state ={}
-  }
+const Area = (props) => {
 
-  render() {
-    const { area } = this.props;
+    const { area } = props;
     return (
       <section className="area-box">
-        <img className="area-image" src={this.props.image} alt={area.name} />
+        <img className="area-image" src={ props.image} alt={area.name} />
         <p className="area-title">
           {area.name} {area.name !== area.nickname ? `(${area.nickname})` : ""}
         </p>
@@ -25,8 +19,8 @@ class Area extends React.Component {
           </button>
         </Link>
       </section>
-    );
+    )
   }
-}
+
 
 export default Area;
