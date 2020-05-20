@@ -3,15 +3,13 @@ import "./MainPageContainer.css";
 import AreaContainer from '../AreaContainer/AreaContainer'
 import AllListings from '../AllListings/AllListings'
 import SingleBigListing from '../SingleBigListing/SingleBigListing'
-import Header from '../Header/Header'
 import Favorites from "../Favorites/Favorites"
 
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 class MainPageContainer extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props)
     this.state = {
       areas: props.data,
     }
