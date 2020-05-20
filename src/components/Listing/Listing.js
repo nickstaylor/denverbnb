@@ -1,6 +1,6 @@
 import React from "react";
 import "./Listing.css";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import starOutline from "../../images/star-outline.svg"
 import starFilled from "../../images/pinkStar.png"
@@ -8,7 +8,6 @@ import starFilled from "../../images/pinkStar.png"
 class Listing extends React.Component {
   constructor(props){
     super(props)
-    console.log(props)
       this.state = {
       isFavorited: this.props.favorite,
       starFilled: starFilled,
