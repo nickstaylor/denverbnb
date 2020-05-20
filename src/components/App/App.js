@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import Login from "../Login/Login";
 import Header from "../Header/Header";
-import AreaContainer from "../AreaContainer/AreaContainer";
 import MainPageContainer from "../MainPageContainer/MainPageContainer";
 import Favorites from "../Favorites/Favorites"
 import { fetchingApi, getIndividualListing } from '../../apiCalls/apiCalls'
@@ -46,13 +45,11 @@ class App extends Component {
   };
 
   favoriteListing = (value, fromFavorites) =>{
-    console.log('unfavorited')
     this.updateFavorites(value, fromFavorites)
   }
 
   updateFavorites = (value) => {
     let id = value.listing_id
-    console.log(id)
       if (!this.state.favoriteListingsID.includes(id)){
       this.setState({favoriteListingsID: [...this.state.favoriteListingsID, id]})
     } else {
@@ -60,11 +57,6 @@ class App extends Component {
         return listing !== id
       })
       this.setState({favoriteListingsID: newFavorites})
-      console.log(this.state.favoriteListingsID)
-      // if (fromFavorites){
-      //   console.log('hey')
-      //   this.loadFavorites()
-      // }
     }
     }
 
@@ -84,15 +76,12 @@ class App extends Component {
         return acc
       },[])
       this.setState({favoriteListings: favorites})
-      console.log(this.state.favoriteListings)
+
 
     }
 
 
   render() {
-    console.log('areas', this.state.areas)
-    console.log('favoritesID on App', this.state.favoriteListingsID)
-    console.log('favoriteListings', this.state.favoriteListings)
     return (
       <section className="App">
         <Switch>
