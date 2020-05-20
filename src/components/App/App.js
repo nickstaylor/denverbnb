@@ -5,7 +5,7 @@ import Header from "../Header/Header";
 import AreaContainer from "../AreaContainer/AreaContainer";
 import MainPageContainer from "../MainPageContainer/MainPageContainer";
 import Favorites from "../Favorites/Favorites"
-import { getAreas, getNeighborhood, getListings } from '../../apiCalls/apiCalls'
+import { fetchingApi, getIndividualListing } from '../../apiCalls/apiCalls'
 
 
 
@@ -25,56 +25,15 @@ class App extends Component {
       favoriteListingsID: [], // just the id's of the listings
       favoriteListings: [], //object instances of listing
       error: "",
+      images: [caphill, lohi, parkhill, rino]
     };
   }
 
-  componentDidMount = () => {
-    const array = [];
-    const baseURL = "https://vrad-api.herokuapp.com";
-      getAreas()
-      .then((someInfo) => {
-        someInfo.areas.map((neighborhood) => {
-          getNeighborhood(neighborhood.details)
-            .then((singleNeighborhood) => {
-              const listingPromises = singleNeighborhood.listings.map(
-                listing => {
-                  return getListings(listing)
-                }
-              );
-              return Promise.all(listingPromises)
-                .then((data) => {
-                  return {
-                    ...singleNeighborhood,
-                    nickname: neighborhood.area,
-                    listings: data,
-                  };
-                })
-                .then((areaInfo) => {
-                  array.push(areaInfo);
-                  return array;
-                })
-                .then((completedData) => {
-                  completedData.forEach((area) => {
-                    if (area.nickname === "RiNo") {
-                      area.image = rino;
-                    }
-                    if (area.nickname === "Park Hill") {
-                      area.image = parkhill;
-                    }
-                    if (area.nickname === "LoHi") {
-                      area.image = lohi;
-                    }
-                    if (area.nickname === "Cap Hill") {
-                      area.image = caphill;
-                    }
-                  });
-                  return completedData;
-                })
-                .then((array) => this.setState({ areas: array }))
-                .catch((error) => this.setState({ error }));
-              });
-          });
-        });
+    componentDidMount = async () => {
+   const fetchingApis = await fetchingApi()
+   const eachListingArray = await getIndividualListing(fetchingApis)
+  Promise.all(eachListingArray).then((array) => this.setState({ areas: array })).catch((error) => this.setState({ error }))
+
   };
 
   addUser = (person) => {
@@ -91,7 +50,7 @@ class App extends Component {
     this.updateFavorites(value, fromFavorites)
   }
 
-  updateFavorites = (value, fromFavorites) => {
+  updateFavorites = (value) => {
     let id = value.listing_id
     console.log(id)
       if (!this.state.favoriteListingsID.includes(id)){
@@ -102,10 +61,10 @@ class App extends Component {
       })
       this.setState({favoriteListingsID: newFavorites})
       console.log(this.state.favoriteListingsID)
-      if (fromFavorites){
-        console.log('hey')
-        this.loadFavorites()
-      }
+      // if (fromFavorites){
+      //   console.log('hey')
+      //   this.loadFavorites()
+      // }
     }
     }
 
@@ -150,10 +109,11 @@ class App extends Component {
                   {" "}
                   <Header removeUser={this.removeUser} numberofFavorites={this.state.favoriteListingsID} loadFavorites={this.loadFavorites} />{" "}
                   <MainPageContainer
-
+                    favoriteListingsID={this.state.favoriteListingsID}
                     user={this.state.user}
                     data={this.state.areas}
                     updateFavorites={this.updateFavorites}
+                    images={this.state.images}
                   />{" "}
                 </>
               )}
