@@ -10,14 +10,12 @@ const AllListings = (props)=>{
 //we have the ID's of the favorites, we need to map through the listings, match the id,
 //does each listing contain the ID, if it does, tehn favorite is going to be true
 
-  console.log(props.favoriteListingsID)
+
   const { user } = props
   const individualListings = props.listings.map(listing => {
     let isFavorite = null;
     const imagePathA = `/repoImages/${listing.listing_id}_a.jpg`;
       props.favoriteListingsID.forEach(id=> {
-        console.log(parseInt(id))
-        console.log(listing.listing_id)
         if (parseInt(id) === listing.listing_id){
           isFavorite = true
       } else {isFavorite = false}
