@@ -3,6 +3,8 @@ import "./MainPageContainer.css";
 import AreaContainer from '../AreaContainer/AreaContainer'
 import AllListings from '../AllListings/AllListings'
 import SingleBigListing from '../SingleBigListing/SingleBigListing'
+import Header from '../Header/Header'
+import Favorites from "../Favorites/Favorites"
 
 import { Switch, Route, Redirect } from "react-router-dom";
 
@@ -12,23 +14,12 @@ class MainPageContainer extends React.Component {
     console.log(props)
     this.state = {
       areas: props.data,
-      favoriteListings: []
     }
   }
 
 favoriteListing = (value) => {
-  const foundListing = this.state.favoriteListings.find(dataObj => dataObj.listing_id === value.listing_id)
-  if (!foundListing) {
-      this.setState({favoriteListings: [...this.state.favoriteListings, value]})
-  } else if (foundListing) {
-  let newFavorites = this.state.favoriteListings.filter(listing => {
-    return listing.listing_id !== value.listing_id
-  })
-  this.setState({favoriteListings: newFavorites})
-  console.log(foundListing)
- }
+  this.props.updateFavorites(value)
 }
-
 
 render() {
   const { user } = this.props;
@@ -61,9 +52,10 @@ return(
       <Route path='/areas' exact
         render = {() => <AreaContainer user={user} data={data}/> }
       />
-      {//<Route path='/favorites' exact
-      //render = { () => <AllListings {[...this.props.favoriteListings]} user={user} favoriteListing={this.favoriteListing} />} />
-}
+      <Route path= '/favorites' exact
+      render = { () => <Favorites {...this.state.favoriteListings} user={user} favoriteListing={this.favoriteListing} />}
+       />
+
     </Switch>
   </div>
 
