@@ -12,6 +12,8 @@ const AllListings = (props)=>{
     const imagePathA = `/repoImages/${listing.listing_id}_a.jpg`;
     return (
       <Listing
+      favorite={false}
+      comingFromFavorites={false}
       imageA={imagePathA}
       key={listing["listing_id"]}
       data={listing}
