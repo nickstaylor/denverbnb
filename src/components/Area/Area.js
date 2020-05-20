@@ -4,6 +4,7 @@ import { Router, Link, Redirect } from "react-router-dom";
 
 class Area extends React.Component {
   constructor (props) {
+    console.log('area', props)
     super( props )
     this.state ={}
   }
@@ -12,7 +13,7 @@ class Area extends React.Component {
     const { area } = this.props;
     return (
       <section className="area-box">
-        <img className="area-image" src={area.image} alt={area.name} />
+        <img className="area-image" src={this.props.image} alt={area.name} />
         <p className="area-title">
           {area.name} {area.name !== area.nickname ? `(${area.nickname})` : ""}
         </p>
