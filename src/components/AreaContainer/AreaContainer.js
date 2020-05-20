@@ -16,6 +16,10 @@ const AreaContainer = ({data, user}) => {
 
 return(
     <div className="area-container-locations">
+    <div className="area-header">
+    <h2>Denver Neighborhoods</h2>
+    <h4 className="personal-greeting">Welcome, <span>{user.userName}</span>.  Find a great {user.userPurpose === 'other' ? '': <span>{user.userPurpose}</span> } rental in Denver!</h4>
+  </div>
       {displayPics}
     </div>
 )
