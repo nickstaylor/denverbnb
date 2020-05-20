@@ -1,4 +1,4 @@
-# OverLook' Starter Kit
+# 'VRAD' Starter Kit
 
 ''' images of the main page and login '''
 
