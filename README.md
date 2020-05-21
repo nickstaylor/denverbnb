@@ -1,4 +1,4 @@
-# 'VRAD' Starter Kit
+# 'denverbnb' Starter Kit
 
 ''' images of the main page and login '''
 
