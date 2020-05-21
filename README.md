@@ -1,6 +1,7 @@
 # 'denverbnb' Starter Kit
 
-''' images of the main page and login '''
+![image](https://user-images.githubusercontent.com/44849120/82513800-42560f00-9ad1-11ea-9bcb-5c05a78f074d.png)
+
 
 ## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ### Set Up:
