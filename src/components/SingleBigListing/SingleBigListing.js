@@ -2,8 +2,8 @@ import React from "react";
 import "./SingleBigListing.css";
 import starOutline from "../../images/star-outline.svg"
 import starFilled from "../../images/pinkStar.png"
-
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types'
 
 class SingleBigListing extends React.Component {
 constructor(props){
@@ -74,6 +74,19 @@ favoriteThisListing = (event) => {
   </div>
   )
 }
+}
+SingleBigListing.propTypes = {
+  area_id: PropTypes.number,
+  name: PropTypes.string,
+  address: PropTypes.object,
+  detals: PropTypes.object,
+  dev_id: PropTypes.string,
+  area: PropTypes.string,
+  db_connect: PropTypes.number,
+  favoriteListingsID: PropTypes.array,
+  areaName: PropTypes.string,
+  user: PropTypes.object,
+  favoriteListing: PropTypes.func
 }
 
 export default SingleBigListing;

@@ -82,6 +82,7 @@ class App extends Component {
 
 
   render() {
+    console.log('Favorite IDs on APP', this.state.favoriteListingsID)
     return (
       <section className="App">
         <Switch>

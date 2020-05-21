@@ -1,9 +1,9 @@
 import React from "react";
 import "./Area.css";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types'
 
 const Area = (props) => {
-
     const { area } = props;
     return (
       <section className="area-box">
@@ -21,6 +21,11 @@ const Area = (props) => {
       </section>
     )
   }
+
+  Area.propTypes = {
+    area: PropTypes.object,
+    image: PropTypes.string
+    }
 
 
 export default Area;
