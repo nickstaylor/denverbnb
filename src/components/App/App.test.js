@@ -2,9 +2,13 @@ import React from "react";
 import { render, fireEvent, waitFor } from "@testing-library/react";
 import App from "./App";
 import { BrowserRouter, MemoryRouter } from "react-router-dom";
-import { getAreas, getNeighborhood, getListings } from '../../apiCalls/apiCalls'
-import '@testing-library/jest-dom/extend-expect'
-jest.mock('../../apiCalls/apiCalls')
+import {
+  getAreas,
+  getNeighborhood,
+  getListings,
+} from "../../apiCalls/apiCalls";
+import "@testing-library/jest-dom/extend-expect";
+jest.mock("../../apiCalls/apiCalls");
 
 describe("App", () => {
   it("should show the login page when website first loads", () => {
@@ -90,17 +94,20 @@ describe("App", () => {
     //even if fetch call is working perfectly the data still isn't being passed in
     //other tests won't work for the same reason
   });
-  it('Can view all the areas when the app loads', async () => {
+  it("Can view all the areas when the app loads", async () => {
     const router = (
       <BrowserRouter>
         <App />
       </BrowserRouter>
     );
-    const firstFetch = [{
-      area: "RiNo",
-      details: "/api/v1/areas/590"
-}]
-    const areaData = [   {
+    const firstFetch = [
+      {
+        area: "RiNo",
+        details: "/api/v1/areas/590",
+      },
+    ];
+    const areaData = [
+      {
         about:
           "RiNo is a burgeoning area with new bars, restaurants and event spaces popping up all the time. Explore this thriving area of Denver today!",
         id: 590,
@@ -112,35 +119,43 @@ describe("App", () => {
         nickname: "RiNo",
         quick_search: "o5kod9f5cqo0",
         region_code: 6356834,
-      }
-
-
-
-  ]
-        const listing = [{address: {street: "2250 Lawrence St", zip: "80205"},
-area: "rino",
-area_id: 590,
-db_connect: 834470,
-details: {neighborhood_id: 5124122, superhost: true, seller_source: "91jss1", beds: 3, baths: 2.5},
-dev_id: "u4gh2j",
-listing_id: 3,
-name: "Hip RiNo Party Spot"}]
+      },
+    ];
+    const listing = [
+      {
+        address: { street: "2250 Lawrence St", zip: "80205" },
+        area: "rino",
+        area_id: 590,
+        db_connect: 834470,
+        details: {
+          neighborhood_id: 5124122,
+          superhost: true,
+          seller_source: "91jss1",
+          beds: 3,
+          baths: 2.5,
+        },
+        dev_id: "u4gh2j",
+        listing_id: 3,
+        name: "Hip RiNo Party Spot",
+      },
+    ];
 
     //this jest function creates a promise object that is resolved
     //we are overriding the functionality of fetchCall and returning a resolved promise with some data
-    getAreas.mockResolvedValueOnce(firstFetch)
-    const neighborhood = await waitFor(getNeighborhood.mockResolvedValueOnce(areaData))
-    const listing3 = await waitFor(getListings.mockResolvedValueOnce(listing))
-
+    getAreas.mockResolvedValueOnce(firstFetch);
+    const neighborhood = await waitFor(
+      getNeighborhood.mockResolvedValueOnce(areaData)
+    );
+    const listing3 = await waitFor(getListings.mockResolvedValueOnce(listing));
 
     // Render the App component (this component fetches data from an external back-end API)
-    const { getByText, debug } = render(router)
+    const { getByText, debug } = render(router);
     // Check that there is a container element on the page
-      const areaName = await waitFor(() => (getByText("River North")))
-      debug()
+    const areaName = await waitFor(() => getByText("River North"));
+    debug();
     // Check that there are ideas on the page
 
-    expect(areaName).toBeInTheDocument()
+    expect(areaName).toBeInTheDocument();
   });
   //should show listings when "view listings" is clicked within the area container
 

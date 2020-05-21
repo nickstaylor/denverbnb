@@ -1,0 +1,15 @@
+.favorite-listings-container-locations {
+    width: 100%;
+}
+
+
+
+.favorite-listings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 70%;
+    margin: 0 auto;
+    justify-content: space-evenly;
+    height: 75vh;
+}

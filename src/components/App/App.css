@@ -2,19 +2,22 @@
 
 /* .App {} */
 
-body, html {
-  width: 100%;
+body,
+html {
   height: 100vh;
   margin: 0;
+  width: 100%;
 }
 
-.App, #root {
+.App,
+#root {
   height: 100%;
 }
 
-
-
-
+a:visited {
+  color: #4037a7;
+  text-decoration: none;
+}
 
 @media screen and (max-width: 850px) {
   .App {
