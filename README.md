@@ -19,4 +19,4 @@ As a user, you would have to login using an username, email and a category selec
 ![gif of demo](https://media.giphy.com/media/WpTYPSiu2IGd8BZbcP/giphy.gif)
 
 Details...
-The details of this project are outlined in the ''' link to projects in turing '''
+The details of this project are outlined in the [Project Spec](https://frontend.turing.io/projects/module-3/vrad.html)
