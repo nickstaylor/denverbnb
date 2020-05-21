@@ -1,92 +1,91 @@
 .entireSingleBigListing {
-  height: 70vh;
-  width:100%
+  height: 100vh;
+  width: 100%;
 }
 
-.leftSideContainer {
+.big-listing-info {
+  background-color: whitesmoke;
+  border-radius: 5px;
+  border: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  height: 75%;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.big-listing-main,
+.big-listing-aside {
+  background-color: #4037a7;
+  color: white;
+  height: 85%;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  padding: 2%;
+  width: 50%;
+}
+
+.big-listing-aside {
+  margin-left: 2%;
+}
+
+.big-listing-main {
+  margin-right: 2%;
+}
+
+.left-side-header {
   align-items: center;
-  display: inline-flex;
-  flex-direction: column;
-  height: 70vh;
-  width: 40%;
+  display: flex;
 }
 
 .bigListingName {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 2em;
+  font-size: 25px;
 }
 
 .bigListingImageContainer {
   align-items: center;
-  border: 1px solid black;
+  background-color: whitesmoke;
   border-radius: 3px;
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
-  height: 60vh;
+  height: 50vh;
   margin: 2%;
   overflow: scroll;
   width: 80%;
 }
 
 .bigListingImage {
-width: 75%;
-height: auto;
-border: 2px solid black;
-border-radius: 3px;
-box-shadow: 1.5px 1.5px #ADDBE4;
-margin: 2%;
-}
-
-.rightSideContainer {
-  align-items: center;
-  display: inline-flex;
-  flex-direction: column;
-  margin-left: 10%;
-  width: 30%;
-  height:10vh;
+  border-radius: 3px;
+  border: 2px solid black;
+  box-shadow: 1.5px 1.5px #addbe4;
+  height: auto;
+  margin: 2%;
+  width: 75%;
 }
 
 .bigListingBedBathCount {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 2em;
+  font-size: 25px;
   width: 100%;
 }
 
 .costPerNight {
-  color: black;
+  font-style: normal;
   margin-left: 10%;
 }
 
-.areaInfo {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 2em;
-  font-weight: 600;
-}
-
-.featureTitle {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 2em;
-  font-weight: 600;
-}
-
 .someFeatures {
-  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 1.5em;
-  font-weight: 600;
+  font-size: 16px;
 }
 
 .favorite-star-big-listing {
-  position: relative;
-  left: 184px;
-  top: -71px;
-  height: 40px;
-  width: 40px;
-  cursor: pointer;
   background-color: transparent;
   border: none;
-  outline: none;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
 }
 
 .favorite-star-big-listing:hover {
-transform: scale(1.1);
+  transform: scale(1.1);
 }

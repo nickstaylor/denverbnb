@@ -42,7 +42,7 @@ describe("Login", () => {
         <Login addUser={mockAddUser} />
       </BrowserRouter>
     );
-    
+
     //if user clicks button without correct login information
     const { getByText, getByPlaceholderText, getByDisplayValue } = render(
       router

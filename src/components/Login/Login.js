@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Login.css";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from "react-router-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class Login extends Component {
       userNameError: false,
       userEmailError: false,
       userPurposeError: false,
-      completedForm: false
+      completedForm: false,
     };
   }
 
@@ -25,9 +25,11 @@ class Login extends Component {
   checkForErrors = (event) => {
     event.preventDefault();
 
-    this.setState({userNameError: false,
+    this.setState({
+      userNameError: false,
       userEmailError: false,
-      userPurposeError: false,})
+      userPurposeError: false,
+    });
 
     if (!this.state.userName) {
       this.setState({ userNameError: true });
@@ -50,24 +52,24 @@ class Login extends Component {
       this.state.userEmail !== "" &&
       this.state.userPurpose !== "placeholder"
     ) {
-      this.setState({completedForm: true})
+      this.setState({ completedForm: true });
       const user = {
         userName: this.state.userName,
         userEmail: this.state.userEmail,
         userPurpose: this.state.userPurpose,
       };
       this.props.addUser(user);
-      return <Redirect to='/areas' />
+      return <Redirect to="/areas" />;
     }
-  }
-
+  };
 
   render() {
-
     return (
       <section className="login-form-background">
-      <h2>Welcome to <span>denverbnb</span>!</h2>
-      {this.state.completedForm && <Redirect to='/areas' />}
+        <h2>
+          Welcome to <span>denverbnb</span>!
+        </h2>
+        {this.state.completedForm && <Redirect to="/areas" />}
         <section className="login-form-container">
           <form className="login-form">
             <label htmlFor="userName">Name</label>
@@ -108,7 +110,8 @@ class Login extends Component {
               <option value="vacation">Vacation</option>
               <option value="other">Other</option>
             </select>
-            <button className="login-button"
+            <button
+              className="login-button"
               type="submit"
               onClick={(event) => this.checkForErrors(event)}
             >
@@ -117,7 +120,6 @@ class Login extends Component {
           </form>
         </section>
       </section>
-
     );
   }
 }

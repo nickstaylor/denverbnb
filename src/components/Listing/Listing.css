@@ -1,67 +1,62 @@
 .individual-listing {
-    box-sizing: border-box;
-    border: 3px solid #4037A7;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    background-color: #809eff;
-    border-radius: 4px;
-    height: 250px;
-    width: 300px;
-    margin: 15px;
-    box-shadow: 0px 0px 11px 1px rgba(0,0,0,0.75);
+  align-items: center;
+  background-color: #4037a7;
+  border-radius: 4px;
+  border: 3px solid white;
+  box-shadow: 0px 0px 11px 1px rgba(0, 0, 0, 0.75);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 250px;
+  justify-content: space-evenly;
+  margin: 15px;
+  width: 300px;
 }
 
 .listing-image {
-text-align: center;
-margin-top: -15px;
-height: 150px;
-width: 200px;
-border-radius: 10px;
+  border-radius: 10px;
+  height: 150px;
+  margin-top: -15px;
+  text-align: center;
+  width: 200px;
 }
 
 .listing-button {
-color: whitesmoke;
-align-items: center;
-text-align: center;
-background-color: #4037A7;
-font-family: comic;
-border: 1px solid whitesmoke;
-border-radius: 4px;
-padding: 3px;
-cursor: pointer;
-height:35px;
-width: 120px;
-font-size: .9em;
-font-weight: bold;
-transition: all 0.2s ease-in-out;
-margin-top: 5px;
+  align-items: center;
+  background-color: #addbe4;
+  border-radius: 4px;
+  border: 1px solid whitesmoke;
+  color: #4037a7;
+  cursor: pointer;
+  font-size: 1.3em;
+  font-weight: bold;
+  height: 32px;
+  padding: 0 15px;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
 }
 
 .individual-listing h3 {
-  color: #4037A7;
+  color: white;
   margin-top: -20px;
-  margin-bottom: 30px;
-  font-family: comic;
 }
 
 .listing-button:hover {
-transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .favorite-star {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  height: 30px;
   position: relative;
   right: 126px;
   top: 205px;
-  height: 30px;
   width: 30px;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  outline: none;
 }
 
 .favorite-star:hover {
-transform: scale(1.1);
+  transform: scale(1.1);
 }

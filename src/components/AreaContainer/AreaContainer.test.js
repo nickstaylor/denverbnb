@@ -35,10 +35,9 @@ describe("AreaContainer", () => {
     const { getByAltText } = render(router);
     expect(getByAltText("River North")).toBeInTheDocument();
   });
-  
 });
 
-//what else does this do? 
-//it's just static when the page loads 
-//and when you click "view listing" new listings should be available on the page 
+//what else does this do?
+//it's just static when the page loads
+//and when you click "view listing" new listings should be available on the page
 //but since it involes more than one component that is an integration test
