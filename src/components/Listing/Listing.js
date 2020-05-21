@@ -1,6 +1,7 @@
 import React from "react";
 import "./Listing.css";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types'
 
 import starOutline from "../../images/star-outline.svg";
 import starFilled from "../../images/pinkStar.png";
@@ -69,4 +70,19 @@ class Listing extends React.Component {
   }
 }
 
+Listing.propTypes = {
+  favorite: PropTypes.object,
+  comingFromFavorites: PropTypes.bool,
+  imageA: PropTypes.string,
+  data: PropTypes.object,
+  favoriteListing: PropTypes.func
+}
+
 export default Listing;
+
+
+// favorite propType = object
+// Listing.js:12 comingFromFavorites propType = boolean
+// Listing.js:12 imageA propType = string
+// Listing.js:12 data propType = object
+// Listing.js:12 favoriteListing propType = function

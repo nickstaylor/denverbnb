@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Login.css";
-import { Redirect } from "react-router-dom";
+import { Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 class Login extends Component {
   constructor(props) {
@@ -123,4 +124,9 @@ class Login extends Component {
     );
   }
 }
+
+Login.propTypes = {
+  addUser: PropTypes.func
+}
+
 export default Login;

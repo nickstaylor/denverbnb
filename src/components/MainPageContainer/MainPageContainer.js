@@ -4,8 +4,8 @@ import AreaContainer from "../AreaContainer/AreaContainer";
 import AllListings from "../AllListings/AllListings";
 import SingleBigListing from "../SingleBigListing/SingleBigListing";
 import Favorites from "../Favorites/Favorites";
-
 import { Switch, Route } from "react-router-dom";
+import PropTypes from "prop-types";
 
 class MainPageContainer extends React.Component {
   constructor(props) {
@@ -96,4 +96,13 @@ class MainPageContainer extends React.Component {
     );
   }
 }
+
+MainPageContainer.propTypes = {
+  favoriteListingsID: PropTypes.array,
+  user: PropTypes.object,
+  data: PropTypes.array,
+  updateFavorites: PropTypes.func,
+  images: PropTypes.array,
+};
+
 export default MainPageContainer;

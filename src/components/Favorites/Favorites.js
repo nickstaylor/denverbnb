@@ -1,6 +1,7 @@
 import React from "react";
 import Listing from "../Listing/Listing";
 import "./Favorites.css";
+import PropTypes from "prop-types";
 
 class Favorites extends React.Component {
   constructor(props) {
@@ -58,5 +59,12 @@ class Favorites extends React.Component {
     );
   }
 }
+
+Favorites.propTypes = {
+  favorites: PropTypes.array,
+  user: PropTypes.object,
+  updatesFavorites: PropTypes.func,
+  favoriteListing: PropTypes.func,
+};
 
 export default Favorites;

@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.css";
+import PropTypes from "prop-types";
 
 const Header = (props) => {
   return (
@@ -27,4 +28,9 @@ const Header = (props) => {
   );
 };
 
+Header.propTypes = {
+  removeUser: PropTypes.func,
+  numberofFavorites: PropTypes.array,
+  loadFavorites: PropTypes.func,
+};
 export default Header;

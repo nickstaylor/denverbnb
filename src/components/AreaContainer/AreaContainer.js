@@ -1,6 +1,7 @@
 import React from "react";
 import "./AreaContainer.css";
 import Area from "../Area/Area";
+import PropTypes from "prop-types";
 
 const AreaContainer = ({ data, user, images }) => {
   const displayPics = data.map((area) => {
@@ -28,6 +29,12 @@ const AreaContainer = ({ data, user, images }) => {
       {displayPics}
     </div>
   );
+};
+
+AreaContainer.propTypes = {
+  data: PropTypes.array,
+  images: PropTypes.array,
+  user: PropTypes.object,
 };
 
 export default AreaContainer;

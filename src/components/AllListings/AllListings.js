@@ -1,13 +1,10 @@
 import React from "react";
 import "./AllListings.css";
 import Listing from "../Listing/Listing";
-
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const AllListings = (props) => {
-  //we have the ID's of the favorites, we need to map through the listings, match the id,
-  //does each listing contain the ID, if it does, tehn favorite is going to be true
-
   const { user } = props;
   const individualListings = props.listings.map((listing) => {
     let isFavorite = null;
@@ -15,8 +12,6 @@ const AllListings = (props) => {
     props.favoriteListingsID.forEach((id) => {
       if (parseInt(id) === listing.listing_id) {
         isFavorite = true;
-      } else {
-        isFavorite = false;
       }
     });
     return (
@@ -49,6 +44,20 @@ const AllListings = (props) => {
       <section className="all-listings-container">{individualListings}</section>
     </div>
   );
+};
+
+AllListings.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  location: PropTypes.string,
+  about: PropTypes.string,
+  region_code: PropTypes.number,
+  quick_search: PropTypes.string,
+  listings: PropTypes.array,
+  nickname: PropTypes.string,
+  image: PropTypes.string,
+  user: PropTypes.object,
+  favoriteListingsID: PropTypes.array,
 };
 
 export default AllListings;

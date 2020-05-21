@@ -1,6 +1,7 @@
 import React from "react";
 import "./Area.css";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Area = (props) => {
   const { area } = props;
@@ -19,6 +20,11 @@ const Area = (props) => {
       </Link>
     </section>
   );
+};
+
+Area.propTypes = {
+  area: PropTypes.object,
+  image: PropTypes.string,
 };
 
 export default Area;
