@@ -11,7 +11,10 @@
 - 5: 'run' npm test -Test out the APP
 
 ## What is it:
-This was a project that was bootstrapped with [Create React App]. Within this React-App we were to use Components (Fn(), Class), lifeCycle Methods, Router, PropTypes, and finally test out the React-Components using Jest. As a user, you would have to login using an username, email and a category selection. When logged in to the main page we should have a visual que that the correct user is logged in. From the main page the user should be able to select an area in the Denver metro region. Upon selecting an area // region the user will see all the available listings. A listing should contain a Title, an image of what the property looks like, a favorite icon, as well as a view listing button. The favorite icon when clicked will change color to indicate the user has favorited the listing. When the view listing button is clicked we will be presented with all the information in regards to the individual listing.  
+This was a project that was bootstrapped with [Create React App]. Within this React-App we were to use Components (Fn(), Class), lifeCycle Methods, Router, PropTypes, and finally test out the React-Components using Jest. 
+
+## Walk through:
+As a user, you would have to login using an username, email and a category selection. When logged in to the main page we should have a visual que that the correct user is logged in. From the main page the user should be able to select an area in the Denver metro region. Upon selecting an area // region the user will see all the available listings. These listings should contain a Title, an image of what the property looks like, a favorite icon, as well as a view listing button. The favorite icon when clicked will change color to indicate the user has favorited the listing. When the view listing button is clicked we will be presented with all the information in regards to the individual listing.  
 
 ''' gif of the working page '''
 
