@@ -15,6 +15,7 @@ export const fetchingApi = async () => {
   return Promise.all(newData);
 };
 
+
 export const getIndividualListing = async (areaArray) => {
   let map = areaArray.map(async (area) => {
     let listings = await area.listings.map(async (listing) => {
