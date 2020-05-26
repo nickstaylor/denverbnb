@@ -50,7 +50,7 @@ describe("Listing", () => {
     const header = getByText("LoHi Heaven");
     expect(header).toBeInTheDocument();
     expect(getAllByRole("img", { alt: "LoHi Heaven" }));
-    expect(getAllByText("Full Listing!")).toHaveLength(1);
+    expect(getAllByText("Full Listing")).toHaveLength(1);
   });
 
   it("Should test the click of Favorites icon", () => {

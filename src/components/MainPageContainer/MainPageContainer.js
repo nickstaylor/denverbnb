@@ -38,10 +38,17 @@ class MainPageContainer extends React.Component {
               const bigListing = uniqueListing.listings.find(
                 (listing) => listing.listing_id === parseInt(listing_id)
               );
+              let isFavorite = false;
+              this.props.favoriteListingsID.forEach(id => {
+                if (parseInt(id) === bigListing.listing_id) {
+                  isFavorite = true;
+                }
+              })
 
               return (
                 <SingleBigListing
                   {...bigListing}
+                  favorite={isFavorite}
                   favoriteListingsID={this.props.favoriteListingsID}
                   key={bigListing.listing_id}
                   areaName={areaName}

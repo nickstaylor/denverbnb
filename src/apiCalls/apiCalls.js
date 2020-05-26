@@ -13,6 +13,7 @@ export const fetchingApi = async () => {
     return newArea;
   });
   return Promise.all(newData);
+  //this still returns a promise
 };
 
 

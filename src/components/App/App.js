@@ -27,7 +27,9 @@ class App extends Component {
   }
 
   componentDidMount = async () => {
+    console.log(fetchingApi());
     const fetchingApis = await fetchingApi();
+    console.log(fetchingApis);
     const eachListingArray = await getIndividualListing(fetchingApis);
     Promise.all(eachListingArray)
       .then((array) => this.setState({ areas: array }))

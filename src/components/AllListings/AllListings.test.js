@@ -62,6 +62,6 @@ describe("AllListings", () => {
     const header = getByText("Khalid", { options: { exact: true } });
     expect(header).toBeInTheDocument();
     expect(getAllByRole("img", { alt: "favorite" }));
-    expect(getAllByText("Full Listing!")).toHaveLength(2);
+    expect(getAllByText("Full Listing")).toHaveLength(2);
   });
 });
