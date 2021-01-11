@@ -7,10 +7,10 @@
 ## This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 ### Set Up:
 - 1: Git clone
-- 2: Cd into 'VRAD'
+- 2: cd into 'denverbnb'
 - 3: npm install
-- 4: 'run' npm start -Checkout in Browser
-- 5: 'run' npm test -Test out the APP
+- 4: 'run' npm start - View in Browser
+- 5: 'run' npm test - Test out the APP
 
 ## What is it:
 This was a project that was bootstrapped with [Create React App]. Within this React-App we were to use Components (Fn(), Class), lifeCycle Methods, Router, PropTypes, and finally test out the React-Components using Jest. 
